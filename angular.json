@@ -20,11 +20,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/sequelize",
+            "outputPath": "dist/client",
             "index": "client/index.html",
             "main": "client/config/main.ts",
             "polyfills": "client/config/polyfills.ts",
-            "tsConfig": "client/config/tsconfig.app.json",
+            "tsConfig": "client/tsconfig.app.json",
+            "baseHref": "/",
             "inlineStyleLanguage": "scss",
             "assets": ["client/assets/favicon.ico", "client/assets"],
             "styles": ["client/styles/styles.scss"],
@@ -32,18 +33,6 @@
           },
           "configurations": {
             "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
               "fileReplacements": [
                 {
                   "replace": "client/environments/environment.ts",

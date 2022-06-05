@@ -3,9 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "format": "npx prettier --config ./config/.prettierrc.json --ignore-path ./config/.prettierignore --write .",
-    "start": "npx ng serve",
-    "build": "npx ng build"
+    "build:client:watch": "ng build --watch --configuration=development && bread-compressor dist/client",
+    "build:server": "tsc --project server/tsconfig.server.json",
+    "build:server:watch": "tsc --project server/tsconfig.server.json --watch",
+    "clean": "rm -rf dist",
+    "copy-files": "copyfiles -V -f 'package.json' 'dist'",
+    "format": "prettier --config ./config/.prettierrc.json --ignore-path ./config/.prettierignore --write .",
+    "serve": "npm-run-all clean copy-files build:server --parallel build:client:watch build:server:watch start:watch",
+    "start:watch": "nodemon --inspect --delay 2 --watch client --watch server --watch dist dist/server/server.js"
   },
   "browserslist": [
     "last 1 Chrome version",
@@ -31,6 +36,9 @@
     "@angular/router": "14.0.0",
     "@nestjs/common": "8.4.6",
     "@nestjs/core": "8.4.6",
+    "@nestjs/platform-express": "8.4.6",
+    "express": "4.18.1",
+    "express-static-gzip": "2.1.7",
     "reflect-metadata": "0.1.13",
     "rxjs": "7.5.0",
     "tslib": "2.3.0",
@@ -40,7 +48,11 @@
     "@angular-devkit/build-angular": "14.0.0",
     "@angular/cli": "14.0.0",
     "@angular/compiler-cli": "14.0.0",
+    "bread-compressor-cli": "1.1.0",
+    "copyfiles": "2.4.1",
     "husky": "4.3.8",
+    "nodemon": "2.0.16",
+    "npm-run-all": "4.1.5",
     "prettier": "2.6.2",
     "typescript": "4.7.2"
   }
