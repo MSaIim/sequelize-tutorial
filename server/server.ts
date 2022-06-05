@@ -13,7 +13,7 @@ import { ServerModule } from './server.module';
 const pkg = require('../package.json');
 
 // Regular constants
-const PATH_APP_ROUTE = '/app';
+const PATH_APP_ROUTE = '/';
 const PATH_ASSETS_ROUTE = '/assets';
 
 /****************************************/
