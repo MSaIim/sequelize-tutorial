@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build:client:watch": "ng build --watch --configuration=development && bread-compressor dist/client",
+    "build:client:watch": "ng build --watch",
     "build:server": "tsc --project server/tsconfig.server.json",
     "build:server:watch": "tsc --project server/tsconfig.server.json --watch",
     "clean": "rm -rf dist",
     "copy-files": "copyfiles -V -f 'package.json' 'dist'",
     "format": "prettier --config ./config/.prettierrc.json --ignore-path ./config/.prettierignore --write .",
     "serve": "npm-run-all clean copy-files build:server --parallel build:client:watch build:server:watch start:watch",
-    "start:watch": "nodemon --inspect --delay 2 --watch client --watch server --watch dist dist/server/server.js"
+    "start:watch": "nodemon --inspect --delay 2 --watch client --watch dist dist/server/server.js"
   },
   "browserslist": [
     "last 1 Chrome version",
